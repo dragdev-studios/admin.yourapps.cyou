@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>YourApps Administrator Panel</title>
+        <meta name="description" content="YourApps Administrator Panel">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/main.css">
+        <script src="/main.js"></script>
+        <script>
+            // patch in in-line functions
+            var cur_theme = "light";
+            const themes = {
+                "light": "dark",
+                "dark": "light"
+            }
+            function clear_console() {
+                document.querySelector('code').innerHTML = null;
+            }
+            function reload_window() {
+                window.location.reload()
+            }
+            function toggle_theme() {
+                document.body.classList.add(themes[cur_theme])
+                document.body.classList.remove(cur_theme)
+                cur_theme = themes[cur_theme]
+            }
+        </script>
+    </head>
+    <body class="flex-column light">
+        <div class="flex-row">
+            <div>
+                <h1>Live logs:</h1>
+                <div class="console">
+                    <pre><code></code></pre>
+                </div>
+            </div>
+            <div>
+                <div class="flex-column">
+                    <div class="flex-column" id="quick-actions">
+                        <h1>Quick Actions</h1>
+                        <a class="no-decor">
+                            <button>
+                                Download logs
+                            </button>
+                        </a>
+                        <button id="chunk">Chunk server (opens pop-up)</button>
+                    </div>
+                    <div class="flex-column">
+                        <h1>Developer Actions</h1>
+                        <button id="reboot">Reboot</button>
+                        <button id="reload">Reload cogs (opens pop-up)</button>
+                        <button id="git">Git pull (from origin/master)</button>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <div>
+                            <h1>Meta Actions</h1>
+                            <p>Use these to control this webpage</p>
+                        </div>
+                        <button id="clear-console">Clear console (helps with lag)</button>
+                        <button id="reload-window">Refresh</button>
+                        <button onclick="()=>{}">Toggle theme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="flex-column">
+            <h1>Event Log</h1>
+            <div id="event-log" style="width: 75%">
+
+            </div>
+        </div>
+    </body>
+</html>

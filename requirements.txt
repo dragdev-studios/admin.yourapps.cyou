@@ -1,0 +1,4 @@
+uvicorn[standard]
+httpx==0.18.*
+python-dotenv
+bcrypt>=3.2.0
